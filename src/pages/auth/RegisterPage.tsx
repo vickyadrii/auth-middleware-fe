@@ -1,9 +1,13 @@
-const RegisterPage = () => {
-  return (
-    <div>
-      <p>RegisterPage</p>
-    </div>
-  );
+import { useEffect } from "react";
+
+import RegisterForm from "@/features/auth/register/RegisterForm";
+
+const Register = () => {
+  useEffect(() => {
+    document.title = "Register Page | Indive Technical Test";
+  }, []);
+
+  return <RegisterForm />;
 };
 
-export default RegisterPage;
+export default Register;
