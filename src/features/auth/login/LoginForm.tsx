@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -8,10 +9,16 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "@/store/auth";
+import { api } from "@/configs";
+import { useToast } from "@/components/ui/use-toast";
+import { ResponseErrorJSON, ResponseSuccessJSON } from "@/types/response";
+import { useState } from "react";
+import { Spin } from "@/components/ui/spin";
+import { setAccessToken } from "@/lib/authStorage";
 
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  email: z.string().min(2, {
+    message: "email must be at least 2 characters.",
   }),
   password: z.string().min(4),
 });
@@ -19,19 +26,45 @@ const formSchema = z.object({
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { toast } = useToast();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
 
-  const handleOnSubmit = (values: z.infer<typeof formSchema>) => {
-    dispatch(authActions.login(values.username));
+  const handleOnSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsLoading(true);
 
-    navigate("/", { replace: true });
+    try {
+      const res: ResponseSuccessJSON = await api.post("/auth/login", values);
+      const { token, ...dataWithoutToken } = res.data;
+      console.log(res.data);
+
+      dispatch(authActions.login(dataWithoutToken));
+      setAccessToken(res.data?.token);
+      toast({
+        title: "Success!",
+        description: res?.message,
+        duration: 2500,
+      });
+      navigate("/profile", { replace: true });
+    } catch (error) {
+      const err = error as ResponseErrorJSON;
+
+      toast({
+        title: "Error!",
+        description: err?.response?.data?.message,
+        duration: 2500,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -44,12 +77,12 @@ const LoginForm = () => {
               <div className="space-y-4">
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input type="text" placeholder="Username..." {...field} />
+                        <Input type="email" placeholder="Email..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -72,7 +105,7 @@ const LoginForm = () => {
               </div>
 
               <div className="flex justify-between items-center">
-                <Button type="submit">Submit</Button>
+                <Button type="submit">{isLoading ? <Spin /> : "Submit"}</Button>
                 <Link to="/register" className="text-sm font-semibold text-blue-600 underline">
                   Create an account
                 </Link>
