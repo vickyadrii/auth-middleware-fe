@@ -65,8 +65,6 @@ const Profile = () => {
     },
   });
 
-  console.log(user);
-
   const fetchDataUser = useCallback(async () => {
     try {
       const res = await api.get(`/users/${data?.id}`);
@@ -93,8 +91,6 @@ const Profile = () => {
     if (values.photo_profile !== undefined) {
       formData.append("photo_profile", values.photo_profile);
     }
-
-    console.log(values.photo_profile);
 
     try {
       const res: ResponseSuccessJSON = await axios.put("http://localhost:3000/users", formData, {
@@ -240,7 +236,6 @@ const Profile = () => {
                         type="file"
                         accept="image/*"
                         onChange={(event) => onChange(event.target.files && event.target.files[0])}
-                        // onChange={(e) => console.log(e.target.files[0])}
                       />
                     </FormControl>
                     <FormMessage />

@@ -44,7 +44,6 @@ const LoginForm = () => {
     try {
       const res: ResponseSuccessJSON = await api.post("/auth/login", values);
       const { token, ...dataWithoutToken } = res.data;
-      console.log(res.data);
 
       dispatch(authActions.login(dataWithoutToken));
       setAccessToken(res.data?.token);

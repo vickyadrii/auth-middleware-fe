@@ -43,7 +43,6 @@ const Verify = () => {
         duration: 2500,
       });
       navigate("/");
-      console.log(res);
     } catch (error) {
       const err = error as ResponseErrorJSON;
 
