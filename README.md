@@ -1,30 +1,47 @@
-# React + TypeScript + Vite
+# Technical Test Fullstack Indive Tech Solutions (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies used:
+[![My Skills](https://skillicons.dev/icons?i=react,ts,tailwind)](https://skillicons.dev)
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follow the steps below to run this project on your machine.
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Make sure you have installed the following prerequisites before proceeding:
 
-- Configure the top-level `parserOptions` property like this:
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+## Installation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone this repository to your local machine:
+
+   ```git clone https://github.com/vickyadrii/technical-test-fe-indive.git```
+
+2. Navigate to the project directory:
+
+   ```cd technical-test-fe-indive```
+3. Install all the required dependencies using npm or Yarn:
+   ````bash
+   npm install
+   # or
+   yarn
+   ````
+
+## Usage
+
+Start the Express server:
+
+````bash
+   npm run dev
+   # or
+   yarn dev
+   ````
+
+## Built With
+- [React](https://react.dev/) - React library for building user interface
+- [TypeScript](https://www.typescriptlang.org/) - Programming language
+- [Tailwind](https://tailwindcss.com/) - Utility-first CSS framework
+- [Shadcn UI](https://ui.shadcn.com/) - Library that can be used to create dynamic components.
