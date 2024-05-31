@@ -1,7 +1,5 @@
 # Auth Middleware for Frontend
 
-This technical test for a freelance engineer
-
 ## Technologies used:
 [![My Skills](https://skillicons.dev/icons?i=react,ts,tailwind)](https://skillicons.dev)
 
