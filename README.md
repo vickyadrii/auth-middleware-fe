@@ -1,4 +1,4 @@
-# Technical Test Fullstack Indive Tech Solutions (Frontend)
+# Auth Middleware for Frontend
 
 This technical test for a freelance engineer
 
