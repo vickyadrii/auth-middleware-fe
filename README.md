@@ -18,7 +18,7 @@ Make sure you have installed the following prerequisites before proceeding:
 
 1. Clone this repository to your local machine:
 
-   ```git clone https://github.com/vickyadrii/technical-test-fe-indive.git```
+   ```git clone https://github.com/vickyadrii/auth-middleware-fe.git```
 
 2. Navigate to the project directory:
 
