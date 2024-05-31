@@ -22,7 +22,7 @@ Make sure you have installed the following prerequisites before proceeding:
 
 2. Navigate to the project directory:
 
-   ```cd technical-test-fe-indive```
+   ```cd auth-middleware-fe```
 3. Install all the required dependencies using npm or Yarn:
    ````bash
    npm install
